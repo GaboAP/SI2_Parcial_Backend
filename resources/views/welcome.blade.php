@@ -4,11 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<<<<<<< HEAD
         <title>Alfa Branch</title>
-=======
-        <title>Beta Branch</title>
->>>>>>> 0569401 (Set Welcome title to Branch's Name)
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
