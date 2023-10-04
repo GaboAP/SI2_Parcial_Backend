@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+Route::get('/categoria',[CategoriaController::class,'index']);
+route::get('/categoria/create',[CategoriaController::class,'create']);
 Route::get('/', function () {
     return view('welcome');
 });
