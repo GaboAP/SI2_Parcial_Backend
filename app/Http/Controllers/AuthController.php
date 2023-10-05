@@ -15,25 +15,24 @@ class AuthController extends Controller
         ]);
     
         if (Auth::attempt($credentials)) {
-            return 'Logeado con éxito'; // Retorna un mensaje de éxito
+            return response()->json([
+                'message'=> "Logeado con éxito",
+                'status_code'=>200]); // Retorna un mensaje de éxito
         }
     
-        return 'Logeado sin éxito'; // Retorna un mensaje de fracaso
-    }
-
-    protected function attemptLogin(Request $request)
+        return response()->json([
+            'message'=> "Logeado sin éxito",
+            'status_code'=>400]); // Retorna un mensaje de fracaso
+    }public function logout(Request $request)
     {
-        $credentials = $request->only('email', 'password');
-        return Auth::attempt($credentials, $request->filled('remember'));
-    }
-    public function logout(Request $request)
-    {
-        auth()->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        Auth::logout();
+     
+        // $request->session()->invalidate();
+     
+        // $request->session()->regenerateToken();
+     
+        return response()->json([
+            'message'=>"Deslogeau papulince",
+            'status_code'=>200]);
     }
 }
