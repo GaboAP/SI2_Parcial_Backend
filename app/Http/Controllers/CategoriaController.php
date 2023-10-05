@@ -12,14 +12,10 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias= Categoria::paginate();
+        $categorias = Categoria::all();
         return response()->json($categorias, 200);
-
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     /**
      * Store a newly created resource in storage.
      */
@@ -43,6 +39,15 @@ class CategoriaController extends Controller
     {
         return response()->json($categoria, 200, ['Content-Type' => 'application/json; charset=utf-8'], JSON_PRETTY_PRINT); //aqui se redirigiria a la vista de show y se le enviaria el objeto
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Categoria $categoria)
+    {
+        //
+    }
+
     /**
      * Update the specified resource in storage.
      */
