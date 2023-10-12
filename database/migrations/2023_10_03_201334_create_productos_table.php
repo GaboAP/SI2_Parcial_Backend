@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('talla');
             $table->string('color');
+            $table->string('foto');
             $table->decimal('precio', 8, 2);
             $table->unsignedBigInteger('categoriaId');
             $table->unsignedBigInteger('idUsuario');

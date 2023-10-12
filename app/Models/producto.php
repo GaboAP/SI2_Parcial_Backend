@@ -22,4 +22,14 @@ class producto extends Model
     public function sucursal(){
         return $this->belongsToMany('App\Models\sucursal','detalle_sucursal','idProducto','idSucursal');
     }
+    public function inventario(){
+        return $this->hasOne('App\Models\inventario','idInventario');
+    }
+    public function categoria(){
+        return $this->belongsTo('App\Models\categoria','categoriaId');
+    }
+    //create method for user
+    public function user(){
+        return $this->hasOne('App\Models\User','idUsuario');
+    }
 }

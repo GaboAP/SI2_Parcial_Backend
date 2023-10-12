@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,17 +14,26 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
-    
+        $userId=User::where('email',$request->email)->first();
         if (Auth::attempt($credentials)) {
             return response()->json([
-                'message'=> "Logeado con éxito",
+                'message'=> $userId->idUsuario,
                 'status_code'=>200]); // Retorna un mensaje de éxito
         }
     
-        return response()->json([
-            'message'=> "Logeado sin éxito",
-            'status_code'=>400]); // Retorna un mensaje de fracaso
-    }public function logout(Request $request)
+        return response("Logeado sin exito",400); // Retorna un mensaje de fracaso
+    }
+    public function getCurrentId(){
+        if (Auth::check()) {
+            // El usuario está autenticado, puedes obtener su ID de la siguiente manera:
+            $idUsuario = Auth::id();
+            return response()->json($idUsuario,200);
+        } else {
+            // El usuario no está autenticado
+            return 'Usuario no autenticado';
+        }
+    }
+    public function logout(Request $request)
     {
         Auth::logout();
      
