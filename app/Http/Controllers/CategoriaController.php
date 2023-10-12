@@ -12,10 +12,21 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categorias = Categoria::paginate();
+        $categorias = Categoria::all();
         return response()->json($categorias, 200);
     }
-
+    public function search($request){
+        if(Categoria::find($request->categoriaId)->first()){
+            $categoria=Categoria::find($request->categoriaId)->first();
+            return response()->json([
+                'message'=>$categoria->nombre,
+                'id'=>$categoria->categoriaId,
+                'status_code'=>200]);
+        }
+        return response()->json([
+                'message'=>"No existe la categoria",
+                'status_code'=>404]);
+    }
     /**
      * Store a newly created resource in storage.
      */
@@ -40,13 +51,6 @@ class CategoriaController extends Controller
         return response()->json($categoria, 200, ['Content-Type' => 'application/json; charset=utf-8'], JSON_PRETTY_PRINT); //aqui se redirigiria a la vista de show y se le enviaria el objeto
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Categoria $categoria)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
