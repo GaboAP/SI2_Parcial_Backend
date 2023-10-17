@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrito;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,9 +16,16 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         $userId=User::where('email',$request->email)->first();
+        $carrito=Carrito::where('idUsuario',$userId->idUsuario)
+        ->where('estado',1)->first();
+        $idCarrito=0;
+        if($carrito){
+            $idCarrito=$carrito->id;
+        }
         if (Auth::attempt($credentials)) {
             return response()->json([
                 'message'=> $userId->idUsuario,
+                'idCarrito'=>$idCarrito,
                 'status_code'=>200]); // Retorna un mensaje de éxito
         }
     

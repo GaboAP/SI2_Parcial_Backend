@@ -58,9 +58,9 @@ class ProductoController extends Controller
         $producto->talla = $request->talla;
         $producto->color = $request->color;
         $producto->foto = $request->foto;
-        // Asigna las relaciones utilizando los objetos de los modelos
+        $producto->cantidad = $request->cantidad;
+
         $producto->idUsuario = $request->idUsuario;
-        $producto->idInventario = $request->idInventario;
         $producto->categoriaId = $request->categoriaId;
     
         $producto->save();

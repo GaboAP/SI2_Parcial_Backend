@@ -42,4 +42,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    //make function for carros
+    public function carros()
+    {
+        return $this->hasOne(carro::class);
+    }
 }
