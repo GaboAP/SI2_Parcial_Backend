@@ -18,11 +18,10 @@ return new class extends Migration
             $table->string('color');
             $table->string('foto');
             $table->decimal('precio', 8, 2);
+            $table->integer('cantidad');
             $table->unsignedBigInteger('categoriaId');
             $table->unsignedBigInteger('idUsuario');
-            $table->unsignedBigInteger('idInventario');
             
-            $table->foreign('idInventario')->references('idInventario')->on('inventarios');
             $table->foreign('categoriaId')->references('categoriaId')->on('categorias');
             $table->foreign('idUsuario')->references('idUsuario')->on('users');
 

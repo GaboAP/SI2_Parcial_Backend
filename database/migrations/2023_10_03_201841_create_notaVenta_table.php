@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('notaVenta', function (Blueprint $table) {
             $table->string('nombre');
-            $table->string('direccion');
-            $table->integer('nit');
+            $table->bigInteger('nit');
+            $table->string('metodoPago');
             $table->id('idNotaventa');
             $table->timestamps();
         });

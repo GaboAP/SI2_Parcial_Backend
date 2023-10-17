@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('compra', function (Blueprint $table) {
-            $table->id('idCompra');
-            $table->string('metodo_pago');
+        Schema::create('carritos', function (Blueprint $table) {
+            $table->id();
             $table->decimal('total', 8, 2);
+            $table->boolean('estado'); //
             $table->unsignedBigInteger('idUsuario');
 
-            $table->foreign('idUsuario')->references('idUsuario')->on('users');
-
+            $table->foreign('idUsuario')->references('idUsuario')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

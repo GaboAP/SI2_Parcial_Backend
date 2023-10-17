@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('envio', function (Blueprint $table) {
             $table->decimal('costoEnvio', 8, 2);
+            $table->string('direccion');
             $table->id('idEnvio');
             $table->timestamps();
         });
